@@ -27,22 +27,17 @@ library_name: mlx-lm
 
 inpuT Reconstruction from Output Using Transformers.
 
-The release uses an 8-bit MLX Qwen base (affine quantization, group size 64). The base is included under `base-8bit/`.
+David Driscoll · Reconstructs a plausible user prompt from one assistant response. Trained using {train_count} UltraChat first-turn pairs.
 
-An MLX LoRA by David Driscoll for reconstructing the first user prompt from one
-assistant response. The output is a guess. Multiple prompts can produce the same answer.
-
-Trained on {train_count} filtered synthetic first-turn pairs from UltraChat
-revision `{DATA_REV}`, with base revision `{BASE_REV}`. After supervised training, we sample two reconstructions per response on a subset of the training split.
-A frozen MiniLM encoder scores each candidate against the original prompt.
-An additional LoRA training pass learns from the higher-scoring candidates that pass the
-quality and margin thresholds. Mean cosine similarity measures alignment in meaning and
-can miss mistakes involving numbers or negation. Edit distance is normalized by the longer string.
+**Held-out UltraChat evaluation** · 8-bit Qwen2.5-0.5B-Instruct with MLX LoRA.
 
 {results_table(scores)}
 
-[Training and inference code](https://github.com/ddrisco11/response-to-prompt).
-Related work includes [Output2Prompt](https://aclanthology.org/2024.emnlp-main.819/).
+Download with `hf download ddrisco11/TROUT --local-dir TROUT`. Load with `mlx_lm.load("TROUT/base-8bit", adapter_path="TROUT")`.
+
+[GitHub and inference instructions](https://github.com/ddrisco11/response-to-prompt)
+
+**Sources** · [Qwen2.5-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct) · [UltraChat 200k](https://huggingface.co/datasets/HuggingFaceH4/ultrachat_200k) · [MiniLM sentence encoder used for evaluation](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) · [Hu et al., LoRA](https://arxiv.org/abs/2106.09685) · [Zhang, Morris & Shmatikov, Output2Prompt (EMNLP 2024)](https://aclanthology.org/2024.emnlp-main.819/).
 """
     (folder / 'README.md').write_text(card)
     update_public_readme(results_table(scores))
