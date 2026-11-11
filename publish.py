@@ -15,6 +15,24 @@ def main():
         raise ValueError('Finish both held-out evaluations before publishing.')
     train_count = sum(1 for _ in open('data/train.jsonl'))
     card = f"""---
+language:
+- en
+pipeline_tag: text-generation
+tags:
+- prompt-reconstruction
+- prompt-inversion
+- prompt-recovery
+- inverse-prompting
+- response-to-prompt
+- semantic-similarity
+- ultrachat
+- qwen2.5
+- lora
+- mlx
+- apple-silicon
+- 8-bit
+- quantized
+- small-language-model
 base_model: {BASE}
 datasets:
 - {DATASET}
