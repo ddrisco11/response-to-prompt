@@ -25,7 +25,7 @@ library_name: mlx-lm
 
 ![TROUT model card](https://raw.githubusercontent.com/ddrisco11/response-to-prompt/main/trout.png)
 
-Text Reconstruction from Output Using Transformers.
+inpuT Reconstruction from Output Using Transformers.
 
 The release uses an 8-bit MLX Qwen base (affine quantization, group size 64). The base is included under `base-8bit/`.
 
