@@ -1,4 +1,8 @@
-# Response to Prompt
+# TROUT
+
+![TROUT model card](trout.png)
+
+Text Reconstruction from Output Using Transformers.
 
 Given one assistant answer, generate a prompt with the same meaning as the first user prompt. This is a standalone Apple silicon experiment by David Driscoll. The model sees the response text alone. Several prompts can produce the same answer, so a plausible reconstruction may still miss the target.
 

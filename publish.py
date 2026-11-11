@@ -21,7 +21,11 @@ datasets:
 license: apache-2.0
 library_name: mlx-lm
 ---
-# Response to Prompt
+# TROUT
+
+![TROUT model card](https://raw.githubusercontent.com/ddrisco11/response-to-prompt/main/trout.png)
+
+Text Reconstruction from Output Using Transformers.
 
 An MLX LoRA by David Driscoll for reconstructing the first user prompt from one
 assistant response. The output is a guess. Multiple prompts can produce the same answer.
@@ -42,7 +46,7 @@ Related work includes [Output2Prompt](https://aclanthology.org/2024.emnlp-main.8
     update_public_readme(results_table(scores))
     api = HfApi()
     owner = api.whoami()['name']
-    repo = f'{owner}/response-to-prompt-qwen2.5-0.5b-lora'
+    repo = f'{owner}/TROUT'
     api.create_repo(repo, exist_ok=True)
     print(api.upload_folder(repo_id=repo, folder_path=folder,
                             allow_patterns=['README.md', 'adapters.safetensors',
