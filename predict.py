@@ -5,14 +5,18 @@ from pathlib import Path
 
 from huggingface_hub import snapshot_download
 from mlx_lm import generate, load
+from mlx_lm.convert import convert
 
 from settings import BASE, BASE_REV, SEMANTIC_SYSTEM
 
 
 def load_predictor(adapter):
-    base = Path('.assets/base')
-    weights = str(base) if base.is_dir() else snapshot_download(BASE, revision=BASE_REV)
-    model, tokenizer = load(weights, adapter_path=adapter)
+    weights = Path('.assets/base-8bit')
+    if not weights.exists():
+        base = Path('.assets/base')
+        source = str(base) if base.is_dir() else snapshot_download(BASE, revision=BASE_REV)
+        convert(source, str(weights), quantize=True, q_bits=8, q_group_size=64)
+    model, tokenizer = load(str(weights), adapter_path=adapter)
 
     def predict(response, max_tokens=256, sampler=None):
         messages = [

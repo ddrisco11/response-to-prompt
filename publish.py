@@ -27,6 +27,8 @@ library_name: mlx-lm
 
 Text Reconstruction from Output Using Transformers.
 
+The release uses an 8-bit MLX Qwen base (affine quantization, group size 64). The base is included under `base-8bit/`.
+
 An MLX LoRA by David Driscoll for reconstructing the first user prompt from one
 assistant response. The output is a guess. Multiple prompts can produce the same answer.
 
@@ -48,6 +50,7 @@ Related work includes [Output2Prompt](https://aclanthology.org/2024.emnlp-main.8
     owner = api.whoami()['name']
     repo = f'{owner}/TROUT'
     api.create_repo(repo, exist_ok=True)
+    api.upload_folder(repo_id=repo, folder_path=".assets/base-8bit", path_in_repo="base-8bit", ignore_patterns=["README.md"])
     print(api.upload_folder(repo_id=repo, folder_path=folder,
                             allow_patterns=['README.md', 'adapters.safetensors',
                                             'adapter_config.json', 'evaluation.json']), flush=True)

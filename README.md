@@ -6,6 +6,8 @@ Text Reconstruction from Output Using Transformers.
 
 Given one assistant answer, generate a prompt with the same meaning as the first user prompt. This is a standalone Apple silicon experiment by David Driscoll. The model sees the response text alone. Several prompts can produce the same answer, so a plausible reconstruction may still miss the target.
 
+TROUT uses an 8-bit Qwen base for inference and held-out evaluation (525 MB of base weights plus the LoRA adapter). Training uses the original BF16 base.
+
 ## Model and data
 
 The base is [Qwen2.5-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct). MLX-LM trains rank-8 LoRA adapters on the query and value projections in the final eight layers, with the input masked out of the loss. Corpus and base revisions are pinned in settings.py.
