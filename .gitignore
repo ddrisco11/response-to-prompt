@@ -1,0 +1,6 @@
+.assets/
+data/
+adapters/
+logs/
+__pycache__/
+.venv/

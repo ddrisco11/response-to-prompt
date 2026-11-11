@@ -1,0 +1,4 @@
+mlx-lm==0.32.2
+pyarrow
+huggingface-hub
+rapidfuzz

@@ -1,0 +1,6 @@
+BASE = "Qwen/Qwen2.5-0.5B-Instruct"
+BASE_REV = "7ae557604adf67be50417f59c2c2f167def9a775"
+DATASET = "HuggingFaceH4/ultrachat_200k"
+DATA_REV = "8049631c405ae6576f93f445c6b8166f76f5505a"
+SHARD = "data/train_sft-00000-of-00003-a3ecf92756993583.parquet"
+SYSTEM = "Recover the original user's prompt from the assistant response. Output only the predicted prompt, preserving its wording."
